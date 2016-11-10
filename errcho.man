@@ -1,0 +1,39 @@
+.\" Manpage for errcho.
+.\" Contact sovende@gmail.com to correct errors or typos.
+.TH man 8 "10 November 2016" "1.0" "errcho man page"
+.TH ERRCHO 1
+.SH NAME
+errcho \- like echo, but to stderr 
+.SH SYNOPSIS
+.B errcho
+"Error: ..."
+.SH DESCRIPTION
+.B errcho
+behaves exactly like echo, but outputs to stderr.
+.SH EXAMPLES
+To output to stderr, use the 
+.BR errcho (1)
+command:
+.PP
+.nf
+.RS
+echo "ERROR: Bad example" 1>/dev/null
+
+[NO OUTPUT]
+
+errcho "ERROR: Bad example" 1>/dev/null
+
+ERROR: Bad example
+.RE
+.fi
+.PP
+
+.SH OPTIONS
+The errcho accepts the same options as 
+.BR echo (1)
+.SH SEE_ALSO
+.BR echo (1)
+.SH BUGS
+No known bugs.
+.SH AUTHOR
+Emil 'Skeen' Madsen (sovende@gmail.com)
