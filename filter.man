@@ -1,0 +1,50 @@
+.\" Manpage for filter.
+.\" Contact sovende@gmail.com to correct errors or typos.
+.TH man 8 "10 November 2016" "1.0" "filter man page"
+.TH FILTER 1
+.SH NAME
+filter \- Filter stdin to stdout/stderr based upon predicate
+.SH SYNOPSIS
+.B filter
+[PREDICATE]
+.SH DESCRIPTION
+.B filter
+is a simple shell program for filtering stdin into stdout and stderr, by evaluating a specified predicate for each line in the input.
+
+If the predicate returns \fB`true`\fR on a input line, it's filtered to stdout, if \fB`false`\fR to stderr.
+.SH EXAMPLES
+To filter a list of URLs based upon their availability, use the
+.BR filter (1)
+command:
+.PP
+.nf
+.RS
+cat list_of_urls | filter "wget --spider -q" 2>/dev/null
+
+debian.org
+gnu.org
+.RE
+.fi
+.PP
+
+To filter a list of URLs based upon their inavailability, use the
+.BR filter (1)
+command:
+.PP
+.nf
+.RS
+cat list_of_urls | filter "wget --spider -q" 1>/dev/null
+
+this_page_is_down.not_found
+.RE
+.fi
+.PP
+
+.SH OPTIONS
+The filter does not accept any options, but it does \fBrequire\fR a predicate.
+
+The predicate can be any unix command, for instance \fB`true`\fR or \fB`false`\fR to sort all input to stdout or stderr respectively.
+.SH BUGS
+No known bugs.
+.SH AUTHOR
+Emil 'Skeen' Madsen (sovende@gmail.com)
