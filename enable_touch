@@ -1,0 +1,3 @@
+#!/bin/bash
+
+xinput | grep 'Touch Controller' | sed 's/.*id=\([0-9]*\).*/\1/g' | xargs xinput enable

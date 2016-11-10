@@ -1,0 +1,16 @@
+#!/bin/bash
+
+function main {
+    FONT_SIZE=$1
+    if [ "$FONT_SIZE" -ge "0" ] 2>/dev/null; then
+        echo "Setting font size: $FONT_SIZE"
+        xtermcontrol --font="Liberation Mono:antialias=true:size=$FONT_SIZE"
+        #xtermcontrol --font="Liberation Mono:size=15:antialias=true"
+    fi
+}
+
+function usage {
+    echo "Usage: xsetsize [NEW_FONT_SIZE]"
+}
+
+[ "$#" -ne 1 ] && ( usage && exit 1 ) || main $@

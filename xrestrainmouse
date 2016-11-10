@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Set mouse X,Y,SCREEN and WINDOW
+eval `xdotool getmouselocation --shell`
+echo $X $Y $SCREEN $WINDOW
+xdotool behave $WINDOW mouse-leave mousemove $X $Y
+# TODO: Calculate closest point inside window, and go to that
+#xdotool behave $WINDOW mouse-leave getmouselocation

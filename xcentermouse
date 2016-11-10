@@ -1,0 +1,15 @@
+#!/bin/sh
+
+WINDOW_ID=$1
+
+# Pull out the window dimensions
+GEOMETRY=$(xdotool getwindowgeometry $WINDOW_ID | grep "Geometry:" | sed "s#Geometry: \(.*\)x\(.*\)#\1 \2#")
+WINDOW_WIDTH=$(echo $GEOMETRY | cut -d' ' -f1)
+WINDOW_HEIGHT=$(echo $GEOMETRY | cut -d' ' -f2)
+
+# Calculate the offset to center of the window
+WINDOW_WIDTH_HALF=$(expr $WINDOW_WIDTH / 2)
+WINDOW_HEIGHT_HALF=$(expr $WINDOW_HEIGHT / 2)
+
+# Move the mouse to the center of the window
+xdotool mousemove --window $1 $WINDOW_WIDTH_HALF $WINDOW_HEIGHT_HALF

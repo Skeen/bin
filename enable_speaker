@@ -1,0 +1,5 @@
+#!/bin/sh
+
+amixer -c 1 set 'Master' on
+amixer -c 1 set 'Speaker' on
+amixer -c 1 set 'Bass Speaker' on

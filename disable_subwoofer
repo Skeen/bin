@@ -1,0 +1,7 @@
+#!/bin/sh
+[ `whoami` = root ] || exec sudo $0
+
+## Enable subwoofer
+dev="/dev/snd/hwC1D0"
+
+hda-verb $dev 0x1a 0x707 0x20
