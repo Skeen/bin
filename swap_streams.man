@@ -1,0 +1,36 @@
+.\" Manpage for swap_streams.
+.\" Contact sovende@gmail.com to correct errors or typos.
+.TH man 8 "10 November 2016" "1.0" "swap_streams man page"
+.TH SWAP_STREAMS 1
+.SH NAME
+swap_streams \- Swap stdout and stderr in a pipe
+.SH SYNOPSIS
+.B swap_streams
+.SH DESCRIPTION
+.B swap_streams
+is a simple shell program, which swaps stdout and stderr when used in pipes.
+.SH EXAMPLES
+To swap the output streams of a pipe, use the
+.BR swap_streams (1)
+command:
+.PP
+.nf
+.RS
+echo "ERROR: Bad example" 1>/dev/null
+
+[NO OUTPUT]
+
+
+echo "ERROR: Bad example" | swap_streams 1>/dev/null
+
+ERROR: Bad example
+.RE
+.fi
+.PP
+
+.SH OPTIONS
+The swap_streams not accept any options.
+.SH BUGS
+No known bugs.
+.SH AUTHOR
+Emil 'Skeen' Madsen (sovende@gmail.com)
