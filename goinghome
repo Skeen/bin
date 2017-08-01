@@ -1,0 +1,16 @@
+#!/bin/bash
+
+LOG=~/worklog.txt
+
+
+CURRENT_STATE=$(cat $LOG | tail -1 | cut -f1 -d' ' --complement)
+if [ "$CURRENT_STATE" == "GOINGHOME" ]; then
+    echo "Already going home."
+    exit
+fi
+
+workingon "Going home"
+echo `date +%s` "GOINGHOME" >> $LOG
+
+HOURS=$(cat $LOG | tail -2 | cut -f1 -d' ' | tr '\n' ' ' | awk '{ print ($2 - $1)/60/60 " hours" }')
+echo "You were at work for: $HOURS"

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+LOG=~/timelog.txt
+
+echo `date +%s` $* >> $LOG
+
+cat $LOG | tail -2 | head -1 | cut -f1 -d' ' --complement
+cat $LOG | tail -2 | cut -f1 -d' ' | tr '\n' ' ' | awk '{ print ($2 - $1)/60/60 " hours" }'
